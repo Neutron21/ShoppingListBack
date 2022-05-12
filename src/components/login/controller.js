@@ -10,8 +10,14 @@ const addUser = body => {
                 body : {},
                 message : 'Usuario Creado!'
             }
-            newUser.body = await store.createUser(body);
-            _res(newUser);
+            try {
+                newUser.body = await store.createUser(body);
+                _res(newUser);
+            } catch (error) {
+                console.error(error);
+                _rej(error);
+            }
+           
         }
     });
 }
@@ -23,7 +29,7 @@ const login = body => {
         } else {
             let newUser = {
                 body : {},
-                message : 'Usuario Creado!'
+                message : 'Acceso Correcto!'
             }
             newUser.body = await store.isLogin(body);
             console.log(newUser);
@@ -36,7 +42,7 @@ const logout = () => {
         try {
             let newUser = {
                 body : {},
-                message : 'Usuario Creado!'
+                message : 'Operación Exitosa!'
             }
             newUser.message = await store.logout();
             _res(newUser);

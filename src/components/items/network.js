@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         bodyRes = Unathorized();
         response.error(res, bodyRes, 401, 'No secret header');
     } else {
-
+        console.log(req.body);
         await controller.addItems(req.body).then(resolve => {
             bodyRes.message = resolve;
             bodyRes.data = req.body;

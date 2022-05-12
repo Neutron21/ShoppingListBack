@@ -25,7 +25,8 @@ router.post('/register', (req, res) => {
                 bodyRes.data = resolve.body;
                 response.success(res, bodyRes, 201);
             }).catch(err => {
-                bodyRes.error = err
+                bodyRes.error = err;
+                bodyRes.data = {};
                 response.error(res, bodyRes, 400, err);
             });
         }).catch(err => {

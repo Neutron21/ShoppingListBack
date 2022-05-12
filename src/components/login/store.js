@@ -17,10 +17,10 @@ const auth = getAuth();
                 }
 
                 resolve(newUser);
-            })
-                .catch((error) => {
-                    reject(error);
-                });
+            }).catch((error) => {
+                console.error('[Error en Store]',error)
+                    reject('El email ya esta registrado');
+            });
         })
 
     }

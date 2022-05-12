@@ -30,13 +30,6 @@ const getUserById = (uid) => {
             _res(data);
         }
     });
-    // try {
-    //     const data =  await store.getById(uid);
-    //     return data;
-    // } catch (error) {
-    //     console.error('[controller error] Error de conexion en BD', err);
-    //     return 'Algo falló intenta más tarde';
-    // }
 }
 const updateUser = body => {
     return new Promise((_res, _rej) => {
