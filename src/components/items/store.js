@@ -17,7 +17,7 @@ const getAll = async (uid) => {
 
 }
 const updateList = async (body) => {
-    
+
     const uid = body.id;
     const updates = {};
     updates[`users/${uid}/shoppingList`] = body.list;

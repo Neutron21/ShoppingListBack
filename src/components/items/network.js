@@ -26,9 +26,8 @@ router.post('/', async (req, res) => {
             response.error(res, bodyRes, 400, err);
         });
 
-
     }
-
+ 
 });
 router.get('/byid', async (req, res) => {
     const secret = req.headers.secret

@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
             bodyRes.error = err;
             bodyRes.message = 'Internal Error';
             bodyRes.data = {};
-            response.error(res, bodyRes, 400, err);
+            response.error(res, bodyRes, 401, err);
         })
     }
 })
@@ -63,7 +63,6 @@ router.post('/logout', (req, res) => {
         bodyRes = Unathorized();
         response.error(res, bodyRes, 401, 'No secret header');
     } else {
-        
          controller.logout().then(resolve => {
             bodyRes.message = resolve.message;
             bodyRes.data = resolve.body;

@@ -2,8 +2,9 @@ const store = require('./store');
 
 const addUser = body => {
     return new Promise( async (_res, _rej) => {
+        console.log(body);
         if (!body.email || !body.password) {
-            console.error('[controller error] Campos vacios');
+            console.error('[loginController error] Campos vacios',body);
             _rej('X_X Los datos son incorrectos');
         } else {
             let newUser = {
@@ -12,28 +13,31 @@ const addUser = body => {
             }
             try {
                 newUser.body = await store.createUser(body);
+                console.log(newUser);
                 _res(newUser);
             } catch (error) {
-                console.error(error);
                 _rej(error);
             }
-           
         }
     });
 }
 const login = body => {
     return new Promise( async (_res, _rej) => {
         if (!body.email || !body.password) {
-            console.error('[controller error] Campos vacios');
+            console.error('[loginController error] Campos vacios',body);
             _rej('X_X Los datos son incorrectos');
         } else {
             let newUser = {
                 body : {},
                 message : 'Acceso Correcto!'
             }
-            newUser.body = await store.isLogin(body);
-            console.log(newUser);
-            _res(newUser);
+            try {
+                newUser.body = await store.isLogin(body);
+                console.log(newUser);
+                _res(newUser);
+            } catch (error) {     
+                _rej(error);
+            }
         }
     });
 }

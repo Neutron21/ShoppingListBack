@@ -7,18 +7,17 @@ const auth = getAuth();
 
     const createUser = body => {
         return new Promise((resolve, reject) => {
+            console.log('Store', body);
             createUserWithEmailAndPassword(
                 auth, body.email, body.password
             ).then((userCredential) => {
-
                 let newUser = {
                     uid: userCredential.user.uid,
                     accessToken: userCredential.user.accessToken,
                 }
-
                 resolve(newUser);
             }).catch((error) => {
-                console.error('[Error en Store]',error)
+                console.error('[Error en createUserStore]:',error)
                     reject('El email ya esta registrado');
             });
         })
@@ -31,10 +30,11 @@ const auth = getAuth();
                 let newUser = {
                     uid: userCredential.user.uid,
                     accessToken: userCredential.user.accessToken,
-                }
+                } 
                 resolve(newUser);
             }).catch(err => {
-                reject(err);
+                console.error('[Error en LoginStore]:', err);
+                reject('Usuario o Contraseña incorrectos');
             })
         })
     }
@@ -44,8 +44,8 @@ const auth = getAuth();
                 console.log(a);
                 resolve('User Logout');
                 }).catch( error => {
-                    console.error("error de Logout: "+error); 
-                    reject(error);
+                    console.error("[Error de Logout]: "+error); 
+                    reject('Error de Logout');
                 })
         })
     } 
