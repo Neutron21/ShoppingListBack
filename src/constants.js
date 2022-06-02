@@ -1,5 +1,5 @@
 const constants = {
-    'PORT': 3001,
+    'PORT': 3000,
     'PASSWORD': 'Hi123456'
 }
 
