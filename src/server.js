@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// app.use('/app', express.static('public'));
+app.use('/app', express.static('public'));
 router(app);
 
 app.listen(constants.PORT);
